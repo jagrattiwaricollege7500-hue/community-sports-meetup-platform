@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PlayLocal - Community Sports Meetups</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header>
+    <a class="logo" href="#home">PlayLocal</a>
+    <nav>
+      <a href="#profile">Profile</a>
+      <a href="#events">Events</a>
+      <a href="#reminders">Reminders</a>
+      <a href="#organizer">Organizer</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero: photos go in the "images" folder (cricket.jpg, swimming.jpg, ...) -->
+  <section class="hero" id="home">
+    <div class="hero-slide active" style="background-image: url('images/cricket.jpg')"></div>
+    <div class="hero-slide" style="background-image: url('images/swimming.jpg')"></div>
+    <div class="hero-slide" style="background-image: url('images/volleyball.jpg')"></div>
+    <div class="hero-slide" style="background-image: url('images/yoga.jpg')"></div>
+    <div class="hero-slide" style="background-image: url('images/cycling.jpg')"></div>
+    <div class="hero-slide" style="background-image: url('images/running.jpg')"></div>
+
+    <div class="hero-content">
+      <h1>Find a game near you. Show up. Play.</h1>
+      <p>Browse local sports meetups, see seats left, join or leave in one tap, and get reminders before every game.</p>
+      <a class="btn" href="#profile">Set up your profile</a>
+      <a class="btn dark" href="#events">Browse events</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>How it works</h2>
+    <div class="steps">
+      <div><h3>Tell us about you</h3><p>Add your age so we can recommend events.</p></div>
+      <div><h3>Pick an event</h3><p>Check venue, time and seats left.</p></div>
+      <div><h3>Join or wait</h3><p>Full? Join the waitlist.</p></div>
+      <div><h3>Get reminded</h3><p>Alerts show under Reminders.</p></div>
+    </div>
+  </section>
+
+  <section id="profile">
+    <h2>Log in and your profile</h2>
+    <form id="profile-form">
+      <label>Full name <input type="text"></label>
+      <label>Email <input type="email"></label>
+      <label>Password <input type="password"></label>
+
+      <div class="two-columns">
+        <label>Age <input type="number" id="age-input" min="13" max="90"></label>
+        <label>Gender
+          <select><option>Female</option><option>Male</option><option>Other</option></select>
+        </label>
+        <label>Phone <input type="tel"></label>
+        <label>Skill level
+          <select><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select>
+        </label>
+      </div>
+
+      <label>Emergency contact <input type="text" placeholder="Name and phone"></label>
+
+      <fieldset>
+        <legend>Your age group</legend>
+        <label><input type="radio" name="age-group" value="all" checked> Show all</label>
+        <label><input type="radio" name="age-group" value="teen"> 13-17</label>
+        <label><input type="radio" name="age-group" value="adult"> 18-39</label>
+        <label><input type="radio" name="age-group" value="senior"> 40+</label>
+      </fieldset>
+
+      <label class="inline"><input type="checkbox"> I am fit to play and accept the venue rules.</label><br>
+      <button class="btn dark" type="submit">Save and see recommended events</button>
+    </form>
+  </section>
+
+  <section id="events">
+    <h2>Upcoming events</h2>
+    <p class="message" id="filter-message"></p>
+
+    <!-- Each card keeps its numbers in data- attributes, which script.js reads -->
+    <div class="grid">
+
+      <article class="card event" id="event1" data-ages="teen adult" data-taken="10" data-max="10" data-waitlist="3">
+        <span class="tag">Football</span> <span class="tag light">Full</span>
+        <h3>Sunday 5-a-side</h3>
+        <p class="small">Sun 8 Nov, 7:00 AM<br>Rose Garden Ground</p>
+        <progress value="10" max="10"></progress>
+        <p class="seats">10 of 10 seats taken - 3 on waitlist</p>
+        <button class="btn join-btn" type="button">Join waitlist</button>
+      </article>
+
+      <article class="card event" id="event2" data-ages="teen adult" data-taken="6" data-max="8" data-waitlist="0">
+        <span class="tag">Badminton</span> <span class="tag light left">2 seats left</span>
+        <h3>Doubles Night</h3>
+        <p class="small">Sat 7 Nov, 6:00 PM<br>PAU Indoor Hall</p>
+        <progress value="6" max="8"></progress>
+        <p class="seats">6 of 8 seats taken - 2 left</p>
+        <button class="btn join-btn" type="button">Join event</button>
+      </article>
+
+      <article class="card event" id="event3" data-ages="adult senior" data-taken="12" data-max="20" data-waitlist="0">
+        <span class="tag">Yoga</span> <span class="tag light left">8 seats left</span>
+        <h3>Morning Stretch</h3>
+        <p class="small">Mon 9 Nov, 6:00 AM<br>Rose Garden Lawn</p>
+        <progress value="12" max="20"></progress>
+        <p class="seats">12 of 20 seats taken - 8 left</p>
+        <button class="btn join-btn" type="button">Join event</button>
+      </article>
+
+      <article class="card event" id="event4" data-ages="teen" data-taken="14" data-max="16" data-waitlist="0">
+        <span class="tag">Cricket</span> <span class="tag light left">2 seats left</span>
+        <h3>Junior Cricket Nets (under 18)</h3>
+        <p class="small">Sat 7 Nov, 4:00 PM<br>Community Ground, Sarabha Nagar</p>
+        <progress value="14" max="16"></progress>
+        <p class="seats">14 of 16 seats taken - 2 left</p>
+        <button class="btn join-btn" type="button">Join event</button>
+      </article>
+
+      <article class="card event" id="event5" data-ages="senior" data-taken="5" data-max="14" data-waitlist="0">
+        <span class="tag">Walking</span> <span class="tag light left">9 seats left</span>
+        <h3>Walking Football (40+)</h3>
+        <p class="small">Wed 11 Nov, 6:30 AM<br>Rose Garden Ground</p>
+        <progress value="5" max="14"></progress>
+        <p class="seats">5 of 14 seats taken - 9 left</p>
+        <button class="btn join-btn" type="button">Join event</button>
+      </article>
+
+
+      <article class="card event" id="event6" data-ages="teen adult" data-taken="7" data-max="12" data-waitlist="0">
+        <span class="tag">Swimming</span> <span class="tag light left">5 seats left</span>
+        <h3>Morning Lap Swim</h3>
+        <p class="small">Tue 10 Nov, 6:30 AM<br>Community Pool, Model Town</p>
+        <progress value="7" max="12"></progress>
+        <p class="seats">7 of 12 seats taken - 5 left</p>
+        <button class="btn join-btn" type="button">Join event</button>
+      </article>
+
+      <article class="card event" id="event7" data-ages="teen adult senior" data-taken="9" data-max="15" data-waitlist="0">
+        <span class="tag">Cycling</span> <span class="tag light left">6 seats left</span>
+        <h3>Sunday Group Ride (20 km)</h3>
+        <p class="small">Sun 8 Nov, 6:00 AM<br>Starts at Clock Tower</p>
+        <progress value="9" max="15"></progress>
+        <p class="seats">9 of 15 seats taken - 6 left</p>
+        <button class="btn join-btn" type="button">Join event</button>
+      </article>
+
+      <article class="card event" id="event8" data-ages="teen adult" data-taken="10" data-max="12" data-waitlist="0">
+        <span class="tag">Volleyball</span> <span class="tag light left">2 seats left</span>
+        <h3>Evening Volleyball</h3>
+        <p class="small">Thu 12 Nov, 5:30 PM<br>Sarabha Nagar Court</p>
+        <progress value="10" max="12"></progress>
+        <p class="seats">10 of 12 seats taken - 2 left</p>
+        <button class="btn join-btn" type="button">Join event</button>
+      </article>
+    </div>
+  </section>
+
+  <section id="reminders">
+    <h2>My events and reminders</h2>
+    <div class="alert" id="empty-message">You have not joined any events yet. Join one and its reminder will appear here.</div>
+
+    <!-- Hidden until the matching event is joined -->
+    <div class="alert urgent" id="reminder1" hidden>Sunday 5-a-side, Sun 8 Nov, 7:00 AM. You are on the waitlist - we will alert you if a seat opens.</div>
+    <div class="alert urgent" id="reminder2" hidden>Doubles Night, Sat 7 Nov, 6:00 PM at PAU Indoor Hall. Leave by 5:30 PM.</div>
+    <div class="alert" id="reminder3" hidden>Morning Stretch, Mon 9 Nov, 6:00 AM. Bring a mat and water.</div>
+    <div class="alert urgent" id="reminder4" hidden>Junior Cricket Nets, Sat 7 Nov, 4:00 PM. Bring your own pads.</div>
+    <div class="alert" id="reminder5" hidden>Walking Football, Wed 11 Nov, 6:30 AM. Wear comfortable shoes.</div>
+    <div class="alert" id="reminder6" hidden>Morning Lap Swim, Tue 10 Nov, 6:30 AM. Bring a swim cap and towel.</div>
+    <div class="alert urgent" id="reminder7" hidden>Sunday Group Ride, Sun 8 Nov, 6:00 AM at Clock Tower. Wear a helmet and carry water.</div>
+    <div class="alert" id="reminder8" hidden>Evening Volleyball, Thu 12 Nov, 5:30 PM at Sarabha Nagar Court.</div>
+  </section>
+
+  <section id="organizer">
+    <h2>Organizer controls</h2>
+
+    <!-- Login box: shown first. The organizer tools stay hidden until login works. -->
+    <form id="login-form">
+      <h3>Organizer login</h3>
+      <p class="small">Only organizers can create events and manage players. Demo login: <b>organizer</b> / <b>play123</b></p>
+      <label>Username <input type="text" id="login-user" required></label>
+      <label>Password <input type="password" id="login-pass" required></label>
+      <button class="btn dark" type="submit">Log in</button>
+      <p class="message" id="login-message"></p>
+    </form>
+
+    <div id="organizer-panel" hidden>
+      <p>Logged in as <b>organizer</b>. <button class="btn outline" id="logout-btn" type="button">Log out</button></p>
+
+      <div class="stats">
+        <div><b>8</b>Events</div>
+        <div><b>82%</b>Avg attendance</div>
+        <div><b>73</b>Players joined</div>
+        <div><b>3</b>On waitlist</div>
+      </div>
+
+      <form id="create-form">
+        <h3>Create an event</h3>
+        <label>Event title <input type="text" required></label>
+        <div class="two-columns">
+          <label>Sport
+            <select><option>Football</option><option>Cricket</option><option>Badminton</option><option>Yoga</option></select>
+          </label>
+          <label>Participant limit <input type="number" min="2" required></label>
+          <label>Date <input type="date" required></label>
+          <label>Time <input type="time" required></label>
+        </div>
+        <label>Venue <input type="text" required></label>
+        <button class="btn dark" type="submit">Publish event</button>
+        <p class="message" id="create-message"></p>
+      </form>
+
+      <h3>Sunday 5-a-side: attendance</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Player</th><th>Status</th><th>Action</th></tr>
+          <tr><td>Aman</td><td>Confirmed</td><td><button class="btn outline remove-btn" type="button">Remove</button></td></tr>
+          <tr><td>Ravi</td><td>Confirmed</td><td><button class="btn outline remove-btn" type="button">Remove</button></td></tr>
+          <tr><td>Jasleen</td><td class="status">Waitlist #1</td><td><button class="btn dark confirm-btn" type="button">Move to confirmed</button></td></tr>
+        </table>
+      </div>
+
+      <h3>Event report</h3>
+      <div class="ticker">
+        <div class="ticker-track" id="ticker-track">
+          <div class="ticker-item"><b>Sunday 5-a-side</b> &nbsp; 10 joined &bull; 3 waitlist &bull; 9 attended &bull; 1 no-show</div>
+          <div class="ticker-item"><b>Doubles Night</b> &nbsp; 8 joined &bull; 0 waitlist &bull; 7 attended &bull; 1 no-show</div>
+          <div class="ticker-item"><b>Morning Stretch</b> &nbsp; 18 joined &bull; 0 waitlist &bull; 15 attended &bull; 3 no-shows</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>About us and contact</h2>
+    <div class="about-grid">
+      <div>
+        <p>PlayLocal is a community project that helps neighbours find sports they enjoy, meet new people and stay active. Anyone can join: kids, adults and seniors, beginners and regular players.</p>
+        <ul>
+          <li>Free and open to everyone in the community</li>
+          <li>Volunteer organizers run every event</li>
+          <li>Safe, friendly sessions at local grounds and halls</li>
+        </ul>
+        <p class="small">Email: hello@playlocal.example<br>Open: 9 AM to 6 PM, Monday to Saturday</p>
+      </div>
+
+      <form id="contact-form">
+        <h3>Send us a message</h3>
+        <label>Name <input type="text" required></label>
+        <label>Email <input type="email" required></label>
+        <label>Message <textarea rows="4" required></textarea></label>
+        <button class="btn dark" type="submit">Send message</button>
+        <p class="message" id="contact-message"></p>
+      </form>
+    </div>
+  </section>
+
+  <footer>PlayLocal &copy; 2026 - Community sports meetups. Class project (HTML, CSS and JavaScript).</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
